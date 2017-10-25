@@ -1,0 +1,37 @@
+Need the following JMenu items
+ 
+File Menu
+  @ Load puzzle from file - using JFileChooser
+  @ Store puzzle into file - using JFileChooser
+  @ Exit Program
+ 
+
+Help Menu
+  @ Dialog of how to play Sudoku
+  @ Dialog box of how to use interface
+  @ About box of authors, netid and name
+ 
+
+Hint Menu (Algorithms)
+  @ Check on fill MODE(if user puts number not on candidate list, 
+  display error and the number is not placed into cell) Use JCheckBoxMenuItem
+
+  @ SINGLE ALG - search through blank cell and see if this alg can 
+  solve, when one cell solved stop alg
+  
+  @ HIDDEN SINGLE - search through blank cells, solve one, stop
+
+  @ Locked Candidate - same as above 
+ 
+  @ Naked Pairs- same as above
+
+  All alg resolve the first blank cell
+
+Board
+  @ Board needs to have 10 buttons on the side, 1-9 and eraser, and once selected
+    the number can be used to put into any blank cell. No need to reselect 
+
+  @ Help button to display candidate list(numbers possible for each cell by 
+    comparing values in cells that share a row/column with cell)
+  
+  
