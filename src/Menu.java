@@ -21,21 +21,7 @@ public class Menu implements ActionListener{
 
 	//constructor
 	public Menu() {
-<<<<<<< HEAD
-		System.out.println("hi");
-		console = new JTextArea(5,20);
-        console.setMargin(new Insets(5,5,5,5));
-        console.setEditable(false);
-        JScrollPane logScrollPane = new JScrollPane(console);
- 
-        //Create a file chooser
-         chooser = new JFileChooser();
-         
-         chooser.setDialogTitle("Select File");
-   
-=======
 
->>>>>>> origin/master
 		//Menus on Board
 		menuBar = new JMenuBar();
 		file = new JMenu("File");
@@ -54,22 +40,7 @@ public class Menu implements ActionListener{
 
 		//File Menu SubMenus
 		Open = new JMenuItem("Open a file");
-		Open.addActionListener(new ActionListener(){
-			@Override
-         public void actionPerformed(ActionEvent actionEvent) {
-					 JFileChooser fileChooser = new JFileChooser();
-
- 				 	fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-
- 					fileChooser.showOpenDialog(null);
-					int returnVal = fileChooser.showOpenDialog(null);
-					if(returnVal == JFileChooser.APPROVE_OPTION) {
-       System.out.println("You chose to open this file: " +
-            fileChooser.getSelectedFile().getName());
-    }
-
-		}
-	});
+		
 		//Open.addMenuListener(new actionListener());
 		file.add(Open);
 
