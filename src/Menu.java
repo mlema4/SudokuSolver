@@ -1,20 +1,15 @@
-import java.io.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 //import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.SwingUtilities;
+
 import javax.swing.*;
-import javax.swing.filechooser.*;
 //import javax.swing.JButton;
 //import javax.swing.JFileChooser;
 //import javax.swing.JFrame;
 
 public class Menu implements ActionListener{
 
-	public JTextArea console;
-	public JFileChooser chooser;
-	 
 	public JMenuBar menuBar;
 
 	public JMenuItem Open, Save, Exit, Candidate, SudInst, GameInst,
@@ -26,6 +21,7 @@ public class Menu implements ActionListener{
 
 	//constructor
 	public Menu() {
+<<<<<<< HEAD
 		System.out.println("hi");
 		console = new JTextArea(5,20);
         console.setMargin(new Insets(5,5,5,5));
@@ -37,6 +33,9 @@ public class Menu implements ActionListener{
          
          chooser.setDialogTitle("Select File");
    
+=======
+
+>>>>>>> origin/master
 		//Menus on Board
 		menuBar = new JMenuBar();
 		file = new JMenu("File");
@@ -51,11 +50,27 @@ public class Menu implements ActionListener{
 		//Hint.addMenuListener(new actionListener());
 
 
-		
+
 
 		//File Menu SubMenus
 		Open = new JMenuItem("Open a file");
-		Open.addActionListener(this);
+		Open.addActionListener(new ActionListener(){
+			@Override
+         public void actionPerformed(ActionEvent actionEvent) {
+					 JFileChooser fileChooser = new JFileChooser();
+
+ 				 	fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+
+ 					fileChooser.showOpenDialog(null);
+					int returnVal = fileChooser.showOpenDialog(null);
+					if(returnVal == JFileChooser.APPROVE_OPTION) {
+       System.out.println("You chose to open this file: " +
+            fileChooser.getSelectedFile().getName());
+    }
+
+		}
+	});
+		//Open.addMenuListener(new actionListener());
 		file.add(Open);
 
 		Save = new JMenuItem("Save game to file");
@@ -65,7 +80,7 @@ public class Menu implements ActionListener{
 		Exit = new JMenuItem("Exit");
 		Exit.addActionListener(this);
 		file.add(Exit);
-		
+
 		Candidate = new JMenuItem("Candidate List");
 		//Candidate.addMenuListener(new actionListener());
 		file.add(Candidate);
@@ -103,7 +118,7 @@ public class Menu implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		frame box = new frame();
 		if(e.getSource().equals(About)) {
-			
+
 			JOptionPane.showMessageDialog(box,"Creators:\nManuel Lema\n" + "Jin Wu\n" + "Timothy Yuen" );
 		}
 		else if(e.getSource().equals(SudInst)) {
@@ -117,11 +132,12 @@ public class Menu implements ActionListener{
 					+ "of previous cells. Also by selecting an algorithm from hints \n"
 					+ "the first empty cell will be filled if possible by specific alg.\n");
 		}
-		
+
 		else if(e.getSource().equals(Exit)) {
 			System.exit(0);
 			//box.setDefaultCloseOperation(JFrame.CLOSE_ON_CLOSE);
 		}
-		
+
+
 	}
 }
