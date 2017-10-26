@@ -10,7 +10,7 @@ public class MiniSudokuButtonGUI extends JFrame
  
  public MiniSudokuButtonGUI()
  {
-  jbutton = new JButton[9];
+  jbutton = new JButton[10];
   gridP = new JPanel(new GridLayout(3,3,5,5));
   gridP.setBorder(new EmptyBorder(5,5,5,5));
    
@@ -22,9 +22,9 @@ public class MiniSudokuButtonGUI extends JFrame
    }
  }
  
- public static void main(String[] args)
- {
-   MiniSudokuButtonGUI m = new MiniSudokuButtonGUI();
-    m.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
- }
+ // public static void main(String[] args)
+ // {
+ //   MiniSudokuButtonGUI m = new MiniSudokuButtonGUI();
+ //    m.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+ // }
 }
