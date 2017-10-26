@@ -12,18 +12,39 @@ import javax.swing.border.EmptyBorder;
 
 public class frame extends SudokuButtonGUI{
   public JPanel gui;
+  public sideButtons buttons;
+  public SudokuButtonGUI grid;
+  public Menu menu;
 
   public frame(){
     gui = new JPanel(new BorderLayout());
     gui.setBorder(new EmptyBorder(2,3,2,3));
 
-    sideButtons buttons = new sideButtons();
-    SudokuButtonGUI grid = new SudokuButtonGUI();
-
+    buttons = new sideButtons();
+    grid = new SudokuButtonGUI();
+    menu = new Menu();
+    gui.add(menu.menuBar, BorderLayout.NORTH);
     gui.add(grid.gui, BorderLayout.WEST);
     gui.add(buttons.buttonPanel, BorderLayout.EAST);
 
   }
+
+public void createFrame(){
+
+  JFrame f = new JFrame("Demo");
+  f.pack();
+  f.setSize(700, 700);
+  f.add(gui);
+
+  f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+  f.setLocationByPlatform(true);
+
+  f.pack();
+
+  f.setVisible(true);
+
+}
 
 
 }
