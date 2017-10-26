@@ -1,7 +1,11 @@
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -23,6 +27,22 @@ public class frame extends SudokuButtonGUI{
     buttons = new sideButtons();
     grid = new SudokuButtonGUI();
     menu = new Menu();
+    menu.Open.addActionListener(new ActionListener(){
+		@Override
+     public void actionPerformed(ActionEvent actionEvent) {
+				 JFileChooser fileChooser = new JFileChooser();
+
+				 	fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+
+					fileChooser.showOpenDialog(null);
+				int returnVal = fileChooser.showOpenDialog(null);
+				if(returnVal == JFileChooser.APPROVE_OPTION) {
+   System.out.println("You chose to open this file: " +
+        fileChooser.getSelectedFile().getName());
+}
+
+	}
+});
     gui.add(menu.menuBar, BorderLayout.NORTH);
     gui.add(grid.gui, BorderLayout.WEST);
     gui.add(buttons.buttonPanel, BorderLayout.EAST);

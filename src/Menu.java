@@ -40,22 +40,7 @@ public class Menu implements ActionListener{
 
 		//File Menu SubMenus
 		Open = new JMenuItem("Open a file");
-		Open.addActionListener(new ActionListener(){
-			@Override
-         public void actionPerformed(ActionEvent actionEvent) {
-					 JFileChooser fileChooser = new JFileChooser();
-
- 				 	fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-
- 					fileChooser.showOpenDialog(null);
-					int returnVal = fileChooser.showOpenDialog(null);
-					if(returnVal == JFileChooser.APPROVE_OPTION) {
-       System.out.println("You chose to open this file: " +
-            fileChooser.getSelectedFile().getName());
-    }
-
-		}
-	});
+		
 		//Open.addMenuListener(new actionListener());
 		file.add(Open);
 
