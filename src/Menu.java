@@ -1,15 +1,20 @@
+import java.io.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 //import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import javax.swing.SwingUtilities;
 import javax.swing.*;
+import javax.swing.filechooser.*;
 //import javax.swing.JButton;
 //import javax.swing.JFileChooser;
 //import javax.swing.JFrame;
 
 public class Menu implements ActionListener{
 
+	public JTextArea console;
+	public JFileChooser chooser;
+	 
 	public JMenuBar menuBar;
 
 	public JMenuItem Open, Save, Exit, Candidate, SudInst, GameInst,
@@ -22,6 +27,16 @@ public class Menu implements ActionListener{
 	//constructor
 	public Menu() {
 
+		console = new JTextArea(5,20);
+        console.setMargin(new Insets(5,5,5,5));
+        console.setEditable(false);
+        JScrollPane logScrollPane = new JScrollPane(console);
+ 
+        //Create a file chooser
+         chooser = new JFileChooser();
+         
+         chooser.setDialogTitle("Select File");
+   
 		//Menus on Board
 		menuBar = new JMenuBar();
 		file = new JMenu("File");
@@ -40,7 +55,7 @@ public class Menu implements ActionListener{
 
 		//File Menu SubMenus
 		Open = new JMenuItem("Open a file");
-		//Open.addMenuListener(new actionListener());
+		Open.addActionListener(this);
 		file.add(Open);
 
 		Save = new JMenuItem("Save game to file");
@@ -108,6 +123,5 @@ public class Menu implements ActionListener{
 			//box.setDefaultCloseOperation(JFrame.CLOSE_ON_CLOSE);
 		}
 		
-
 	}
 }
