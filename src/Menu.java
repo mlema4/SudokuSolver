@@ -26,7 +26,7 @@ public class Menu implements ActionListener{
 
 	//constructor
 	public Menu() {
-
+		System.out.println("hi");
 		console = new JTextArea(5,20);
         console.setMargin(new Insets(5,5,5,5));
         console.setEditable(false);
