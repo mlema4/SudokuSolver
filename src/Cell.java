@@ -8,8 +8,9 @@ public class Cell{
   public JButton cell;
   public int val;
   public String stringVal = ""; //Needed to change the string in the button;
+  private Boolean locked = false;
 
-  public Cell(){  
+  public Cell(){
     cell = new JButton(stringVal);
   }
 
@@ -20,8 +21,17 @@ public class Cell{
     this.val = val;
     this.stringVal = Integer.toString(val);
     cell.setText(Integer.toString(val));
+    locked = true;
   }
 
-  
+  public Boolean getlocked (){
+    return locked;
+  }
+
+  public void setlocked(boolean locked){
+    this.locked = locked;
+  }
+
+
 
 }
