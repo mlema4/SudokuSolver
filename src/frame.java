@@ -32,7 +32,8 @@ public class frame extends SudokuButtonGUI{
 		@Override
      public void actionPerformed(ActionEvent actionEvent) {
 				 JFileChooser fileChooser = new JFileChooser();
-
+         File workingDirectory = new File(System.getProperty("user.dir"));
+         fileChooser.setCurrentDirectory(workingDirectory);
 				 	fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
 				int returnVal = fileChooser.showOpenDialog(null);
