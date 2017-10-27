@@ -101,6 +101,7 @@ import java.io.FileNotFoundException;
       for(int i =0; i<3; i++){
         for(int j=0; j<3; j++){
           miniGrid[i][j].clearGrid();
+
         }
       }
 
@@ -118,8 +119,9 @@ import java.io.FileNotFoundException;
                       val = inputFile.nextInt();
 
                       changeButton(row, col, val);
-
+                      //System.out.println("WHILE TESTING SudokuButtonGUI");
                     }
+                   // System.out.println("TESTING SudokuButtonGUI");
           } catch (FileNotFoundException ex) {
               System.out.println("FILE NOT FOUND!");
           }

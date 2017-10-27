@@ -28,8 +28,14 @@ public class MiniSudokuButtonGUI extends JFrame
    for(int i =0; i<3; i++){
      for(int j=0; j<3; j++){
        jbutton[i][j].cell.setText("");
+       jbutton[i][j].setlocked(false);
      }
    }
+ }
+
+ public Cell getCell(int i, int j){
+   return jbutton[i][j];
+
  }
 
  // public static void main(String[] args)
