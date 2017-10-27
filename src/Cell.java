@@ -19,6 +19,7 @@ public class Cell{
   public void setVal (int val){
     this.val = val;
     this.stringVal = Integer.toString(val);
+    cell.setText(Integer.toString(val));
   }
 
   
