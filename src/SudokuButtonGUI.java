@@ -97,11 +97,21 @@ import java.io.FileNotFoundException;
       }
     }
 
+    public void clearGrid(){
+      for(int i =0; i<3; i++){
+        for(int j=0; j<3; j++){
+          miniGrid[i][j].clearGrid();
+        }
+      }
+
+    }
     public void changeGrid(File filename) {
       try {
-              Scanner inputFile = new Scanner (filename);
 
+              Scanner inputFile = new Scanner (filename);
+              clearGrid();
                     int row, col, val;
+
                     while(inputFile.hasNextInt()){
                       row = inputFile.nextInt();
                       col = inputFile.nextInt();
