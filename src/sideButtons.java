@@ -22,7 +22,7 @@ public class sideButtons {
    buttonColumn = new JPanel(new GridBagLayout());
    buttonColumn.setBorder(new EmptyBorder(5,5,5,5));
    buttonPanel = new JPanel(new GridLayout(0,1,5,5));
-   buttons = new JButton[10];
+   buttons = new JButton[11];
    for (int i = 1; i < 10; i++) {
      JButton tmp = new JButton("" + i);
      tmp.setPreferredSize(new Dimension(50, 50));
@@ -41,6 +41,11 @@ public class sideButtons {
     System.out.println(ex);
   }
   buttonPanel.add(eraser);
+
+  JButton candidateListToggle = new JButton("?");
+  candidateListToggle.setPreferredSize(new Dimension(50,50));
+  buttons[10] = candidateListToggle;
+  buttonPanel.add(candidateListToggle);
 
    buttonColumn.add(buttonPanel);
 }
