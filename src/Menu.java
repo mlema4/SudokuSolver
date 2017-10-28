@@ -13,11 +13,12 @@ public class Menu implements ActionListener{
  public JMenuBar menuBar;
 
  public JMenuItem Open, Save, Exit, Candidate, SudInst, GameInst,
-     About;
+     About, Alg1, Alg2, Alg3, Alg4;
 
- public JCheckBoxMenuItem FillMode, Alg1, Alg2, Alg3, Alg4;
+ public JCheckBoxMenuItem FillMode;
  public boolean fillselected;
  public JMenu file, Help, Hint;
+ private Boolean CheckOnFill = false;
 
  //constructor
  public Menu() {
@@ -40,7 +41,7 @@ public class Menu implements ActionListener{
 
   //File Menu SubMenus
   Open = new JMenuItem("Open a file");
-  
+
   //Open.addMenuListener(new actionListener());
   file.add(Open);
 
@@ -73,13 +74,13 @@ public class Menu implements ActionListener{
   FillMode = new JCheckBoxMenuItem("Fill Mode");
   FillMode.addActionListener(this);
   Hint.add(FillMode);
-  Alg1 = new JCheckBoxMenuItem("Single Alg");
+  Alg1 = new JMenuItem("Single Alg");
   Hint.add(Alg1);
-  Alg2 = new JCheckBoxMenuItem("Hidden Alg");
+  Alg2 = new JMenuItem("Hidden Alg");
   Hint.add(Alg2);
-  Alg3 = new JCheckBoxMenuItem("Locked Candidate");
+  Alg3 = new JMenuItem("Locked Candidate");
   Hint.add(Alg3);
-  Alg4 = new JCheckBoxMenuItem("Naked Pair");
+  Alg4 = new JMenuItem("Naked Pair");
   Hint.add(Alg4);
   menuBar.add(file);
   menuBar.add(Hint);
@@ -117,8 +118,15 @@ public class Menu implements ActionListener{
     //fillselected = FillMode.isSelected();
    if(FillMode.isSelected())
    {
-    JOptionPane.showMessageDialog(box, "Fill Mode has been toogled on."); 
+    JOptionPane.showMessageDialog(box, "Fill Mode has been toogled on.");
+    CheckOnFill = true;
    }
+   else
+    CheckOnFill =false;
   }
+ }
+
+ public Boolean getCheckFillOn(){
+   return CheckOnFill;
  }
 }

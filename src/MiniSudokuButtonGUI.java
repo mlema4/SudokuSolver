@@ -41,10 +41,10 @@ public class MiniSudokuButtonGUI extends JFrame
    miniGridRep = new ArrayList<>();
  }
  public void printMiniGridRep(){
-   System.out.println("Printig GRid MINI");
-   for (String val : miniGridRep) {
-     System.out.println(val);
-   }
+  //  System.out.println("Printig GRid MINI");
+  //  for (String val : miniGridRep) {
+  //    System.out.println(val);
+  //  }
  }
 
  public Cell getCell(int i, int j){

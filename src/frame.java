@@ -13,18 +13,20 @@ import javax.swing.border.EmptyBorder;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 
 public class frame extends SudokuButtonGUI{
   public JPanel gui;
   public sideButtons buttons;
   public SudokuButtonGUI grid;
-  public Menu menu;
-  public File fileName;
-  public String valueClicked = "";
-  public JLabel candidateList;
+  public Menu    menu;
+  public File    fileName;
+  public String  valueClicked = "";
+  public JLabel  candidateList;
   public Boolean candidateListToggle = false;
   public Boolean EraserToggle = false;
+  //public Boolean CheckOnFill = false;
 
 
   public frame(){
@@ -55,16 +57,18 @@ public class frame extends SudokuButtonGUI{
             }
     				grid.changeGrid(fileName);
 
-            for (int i =0; i<3;i++){
-              for (int j =0; j<3;j++){
-                setEventListeners(grid.miniGrid[i][j]);
-              }
-            }
+
 
           }
 
 	    }
     });
+
+    for (int i =0; i<3;i++){
+      for (int j =0; j<3;j++){
+        setEventListeners(grid.miniGrid[i][j]);
+      }
+    }
 
     gui.add(menu.menuBar, BorderLayout.NORTH);
     gui.add(grid.gui, BorderLayout.WEST);
@@ -127,27 +131,46 @@ public void setEventListeners(MiniSudokuButtonGUI mini){
             }
             else{
               if(EraserToggle)  {
+                if(!tmpCell.getlocked()){
+                //  System.out.println(tmpCell.getlocked());
                 getMiniGrid(tmpCell.getxIndex()+1,tmpCell.getyIndex()+1).miniGridRep.remove(tmpCell.cell.getText());
                 grid.gridRep[tmpCell.getxIndex()][tmpCell.getyIndex()] = "0";
                 tmpCell.cell.setText(valueClicked);
-                System.out.println("HELLOFRAME");
+              //  System.out.println("HELLOFRAME");
+                }
               }
-              else if(tmp.contains(valueClicked)){
+              else if(menu.getCheckFillOn() && !tmpCell.getlocked()){
+                if(tmp.contains(valueClicked)){
+                  tmpCell.cell.setText(valueClicked);
+                  grid.gridRep[tmpCell.getxIndex()][tmpCell.getyIndex()] = valueClicked;
+                  //System.out.println("X: " + tmpCell.getxIndex() +
+                  //"Y: " + tmpCell.getyIndex());
+                  getMiniGrid(tmpCell.getxIndex()+1,tmpCell.getyIndex()+1).miniGridRep.add(valueClicked);
+                }
+                else if (!tmpCell.getlocked()){
+                  frame frame = new frame();
+                  JOptionPane.showMessageDialog(frame,
+                  "Can not put " + valueClicked +
+                  " in cell. Clcik the ? to check for possible options",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+                }
+              }
+              else if(!tmpCell.getlocked()){
                 tmpCell.cell.setText(valueClicked);
                 grid.gridRep[tmpCell.getxIndex()][tmpCell.getyIndex()] = valueClicked;
                 //System.out.println("X: " + tmpCell.getxIndex() +
                 //"Y: " + tmpCell.getyIndex());
                 getMiniGrid(tmpCell.getxIndex()+1,tmpCell.getyIndex()+1).miniGridRep.add(valueClicked);
               }
-          }
-            ArrayList<String> tmp1 = getCandidateList(tmpCell.getxIndex(), tmpCell.getyIndex());
-            for(String val: tmp1){
-              System.out.print(val + " ");
-
             }
-            System.out.println();
-            grid.printGridRep();
-            getMiniGrid(tmpCell.getxIndex()+1,tmpCell.getyIndex()+1).printMiniGridRep();
+            ArrayList<String> tmp1 = getCandidateList(tmpCell.getxIndex(), tmpCell.getyIndex());
+            // for(String val: tmp1){
+            //   System.out.print(val + " ");
+            //
+            // }
+            // System.out.println();
+            //grid.printGridRep();
+            //getMiniGrid(tmpCell.getxIndex()+1,tmpCell.getyIndex()+1).printMiniGridRep();
           }
         });
       }
