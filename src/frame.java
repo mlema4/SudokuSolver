@@ -107,7 +107,7 @@ public class frame extends SudokuButtonGUI{
       }
     });
 
-
+    menu.addSaveListener(grid.gridRep);
 
   }
 public void setEventListeners(MiniSudokuButtonGUI mini){

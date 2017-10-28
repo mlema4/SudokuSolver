@@ -5,8 +5,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 //import javax.swing.JButton;
-//import javax.swing.JFileChooser;
+import javax.swing.JFileChooser;
 //import javax.swing.JFrame;
+import java.io.File;
+import java.io.FileWriter;
 
 public class Menu implements ActionListener{
 
@@ -87,7 +89,38 @@ public class Menu implements ActionListener{
   menuBar.add(Help);
 
   //this.setJMenuBar(menuBar);
+//  addSaveListener();
 
+ }
+
+ public void addSaveListener(String [][] gridRep){
+   Save.addActionListener(new ActionListener(){
+     @Override
+     public void actionPerformed (ActionEvent actionEvent){
+       JFileChooser chooser = new JFileChooser();
+        File workingDirectory = new File(System.getProperty("user.dir"));
+       chooser.setCurrentDirectory(workingDirectory);
+       int retrival = chooser.showSaveDialog(null);
+       if (retrival == JFileChooser.APPROVE_OPTION) {
+           try {
+               FileWriter fw = new FileWriter(chooser.getSelectedFile()+".txt");
+               for(int i=0; i<9; i++){
+                 for(int j=0; j<9; j++){
+                   if(!gridRep[i][j].equals("0")){
+                  String info = Integer.toString(i+1) + " " + Integer.toString(j+1) +
+                  " " + gridRep[i][j] + "\n";
+                  fw.write(info);
+                 }
+               }
+             }
+
+               fw.close();
+           } catch (Exception ex) {
+               ex.printStackTrace();
+           }
+       }
+     }
+   });
  }
 
  public void actionPerformed(ActionEvent e) {
