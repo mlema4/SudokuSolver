@@ -3,13 +3,17 @@ import java.awt.GridLayout;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.Dimension;
+import java.util.ArrayList;
+
 public class MiniSudokuButtonGUI extends JFrame
 {
  public Cell[][] jbutton;
  public JPanel gridP;
+ public ArrayList<String> miniGridRep;
 
  public MiniSudokuButtonGUI()
  {
+   miniGridRep = new ArrayList<>();
   jbutton = new Cell[3][3];
   gridP = new JPanel(new GridLayout(3,3,5,5));
   gridP.setBorder(new EmptyBorder(5,5,5,5));
@@ -33,9 +37,22 @@ public class MiniSudokuButtonGUI extends JFrame
    }
  }
 
+ public void resetminiGridRep(){
+   miniGridRep = new ArrayList<>();
+ }
+ public void printMiniGridRep(){
+   System.out.println("Printig GRid MINI");
+   for (String val : miniGridRep) {
+     System.out.println(val);
+   }
+ }
+
  public Cell getCell(int i, int j){
    return jbutton[i][j];
+ }
 
+ public void addValueToGrid(String val){
+   miniGridRep.add(val);
  }
 
  // public static void main(String[] args)

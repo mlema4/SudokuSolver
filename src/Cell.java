@@ -9,7 +9,7 @@ public class Cell{
   public int val;
   public String stringVal = ""; //Needed to change the string in the button;
   private Boolean locked = false;
-
+  private int xIndex, yIndex;
   public Cell(){
     cell = new JButton(stringVal);
   }
@@ -32,6 +32,19 @@ public class Cell{
     this.locked = locked;
   }
 
+  public void setxIndex(int x){
+    xIndex = x;
+  }
 
+  public void setyIndex(int y){
+    yIndex = y;
+  }
 
+  public int getxIndex(){
+    return xIndex;
+  }
+
+  public int getyIndex(){
+    return yIndex;
+  }
 }
