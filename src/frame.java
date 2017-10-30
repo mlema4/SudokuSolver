@@ -64,6 +64,25 @@ public class frame extends SudokuButtonGUI{
 	    }
     });
 
+    menu.Alg1.addActionListener(new ActionListener(){
+      @Override
+      public void actionPerformed(ActionEvent actionEvent){
+        Algos algorithm = new Algos(grid);
+        algorithm.Single();
+        grid.printGridRep();
+      }
+    });
+
+    menu.Alg4.addActionListener(new ActionListener(){
+      @Override
+      public void actionPerformed(ActionEvent actionEvent){
+        Algos algorithm = new Algos(grid);
+        algorithm.Naked();
+        System.out.println("NEW GRID");
+        grid.printGridRep();
+      }
+    });
+
     for (int i =0; i<3;i++){
       for (int j =0; j<3;j++){
         setEventListeners(grid.miniGrid[i][j]);
@@ -241,6 +260,7 @@ public MiniSudokuButtonGUI getMiniGrid(int row, int col)
   }
   return null;
 }
+
 public void createFrame(){
 
   JFrame f = new JFrame("Demo");
